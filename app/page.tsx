@@ -1,11 +1,7 @@
 // app/page.tsx
 import Link from 'next/link'
-import Image from 'next/image'
-import { getLatestArticles } from '@/lib/articles'
 
-export default async function HomePage() {
-  const latestArticles = await getLatestArticles(3)
-
+export default function HomePage() {
   return (
     <div className="space-y-12">
       {/* Hero Section */}
@@ -88,44 +84,11 @@ export default async function HomePage() {
           </Link>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {latestArticles.map((article) => (
-            <article key={article.slug} className="bg-white rounded-lg shadow-sm border overflow-hidden hover:shadow-md transition-shadow">
-              {article.featuredImage && (
-                <div className="relative h-48 w-full">
-                  <Image
-                    src={article.featuredImage}
-                    alt={article.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              )}
-              <div className="p-6">
-                <div className="flex items-center text-sm text-gray-500 mb-2">
-                  <time dateTime={article.date}>
-                    {new Date(article.date).toLocaleDateString('ja-JP')}
-                  </time>
-                  <span className="mx-2">•</span>
-                  <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">
-                    {article.category}
-                  </span>
-                </div>
-                <h4 className="font-semibold text-lg mb-2 line-clamp-2">
-                  {article.title}
-                </h4>
-                <p className="text-gray-600 text-sm mb-4 line-clamp-3">
-                  {article.excerpt}
-                </p>
-                <Link 
-                  href={`/articles/${article.slug}`}
-                  className="text-blue-600 hover:text-blue-800 font-medium text-sm"
-                >
-                  続きを読む →
-                </Link>
-              </div>
-            </article>
-          ))}
+        <div className="text-center py-12 bg-gray-50 rounded-lg">
+          <p className="text-gray-600 mb-4">まだ記事がありません</p>
+          <p className="text-sm text-gray-500">
+            content/articles/ フォルダにMarkdownファイルを追加してください
+          </p>
         </div>
       </section>
     </div>
