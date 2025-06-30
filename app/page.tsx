@@ -1,7 +1,7 @@
 // app/page.tsx
 import Link from 'next/link'
 
-export default function HomePage() {
+export default async function HomePage() {
   return (
     <div className="space-y-12">
       {/* Hero Section */}
