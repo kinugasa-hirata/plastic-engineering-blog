@@ -23,27 +23,29 @@ export function getAllArticles(): Article[] {
     return []
   }
 
-  const fileNames = fs.readdirSync(articlesDirectory)
-  const allArticles = fileNames
-    .filter(name => name.endsWith('.md'))
-    .map(name => {
-      const slug = name.replace(/\.md$/, '')
+  const fileNames: string[] = fs.readdirSync(articlesDirectory)
+  const allArticles: Article[] = fileNames
+    .filter((name: string) => name.endsWith('.md'))
+    .map((name: string) => {
+      const slug: string = name.replace(/\.md$/, '')
       return getArticleBySlug(slug)
     })
-    .filter(Boolean) as Article[]
+    .filter((article): article is Article => article !== null)
 
-  return allArticles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  return allArticles.sort((a: Article, b: Article) => 
+    new Date(b.date).getTime() - new Date(a.date).getTime()
+  )
 }
 
 export function getArticleBySlug(slug: string): Article | null {
   try {
-    const fullPath = path.join(articlesDirectory, `${slug}.md`)
+    const fullPath: string = path.join(articlesDirectory, `${slug}.md`)
     
     if (!fs.existsSync(fullPath)) {
       return null
     }
 
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
+    const fileContents: string = fs.readFileSync(fullPath, 'utf8')
     const { data, content } = matter(fileContents)
 
     return {
@@ -64,22 +66,22 @@ export function getArticleBySlug(slug: string): Article | null {
 }
 
 export async function getLatestArticles(count: number = 5): Promise<Article[]> {
-  const allArticles = getAllArticles()
+  const allArticles: Article[] = getAllArticles()
   return allArticles.slice(0, count)
 }
 
 export function getArticlesByCategory(category: string): Article[] {
-  const allArticles = getAllArticles()
-  return allArticles.filter(article => article.category === category)
+  const allArticles: Article[] = getAllArticles()
+  return allArticles.filter((article: Article) => article.category === category)
 }
 
 export function getCategories(): string[] {
-  const allArticles = getAllArticles()
-  const categories = [...new Set(allArticles.map(article => article.category))]
+  const allArticles: Article[] = getAllArticles()
+  const categories: string[] = [...new Set(allArticles.map((article: Article) => article.category))]
   return categories.sort()
 }
 
 export async function markdownToHtml(markdown: string): Promise<string> {
-  const result = await marked(markdown)
+  const result: string = await marked(markdown)
   return result
 }
