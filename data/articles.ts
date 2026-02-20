@@ -21,3 +21,19 @@ export function searchArticles(query: string): Article[] {
       a.category.toLowerCase().includes(q)
   )
 }
+
+export const mockAnalyticsData = {
+  pageViews: [],
+  categoryDistribution: [],
+  topArticles: [],
+}
+
+export const systemHealth = {
+  status: 'healthy',
+  uptime: 100,
+  lastUpdated: new Date().toISOString(),
+}
+
+export const improvementSuggestions: string[] = []
+
+export const notifications: { id: string; message: string; read: boolean }[] = []
