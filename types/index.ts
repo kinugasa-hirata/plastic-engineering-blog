@@ -6,13 +6,13 @@
   category: string
   publishedAt: string
   date: string
+  content: string
+  tags: string[]
+  views: number
   imageUrl?: string
   featuredImage?: string
   author?: string
   readingTime?: number
-  content?: string
-  tags?: string[]
-  views: number
   likes?: number
   translated?: boolean
   sourceUrl?: string
