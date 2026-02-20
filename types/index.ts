@@ -5,7 +5,7 @@
   excerpt: string
   category: string
   publishedAt: string
-  date?: string
+  date: string
   imageUrl?: string
   featuredImage?: string
   author?: string
