@@ -23,27 +23,50 @@ export function searchArticles(query: string): Article[] {
 }
 
 export const mockAnalyticsData = {
-  pageViews: [],
+  pageViews: [] as number[],
   categoryDistribution: [] as { name: string; value: number }[],
   topArticles: [] as { title: string; views: number }[],
   dailyStats: [] as { date: string; visitors: number; pageViews: number }[],
   monthlyGrowth: [] as { month: string; articles: number; visitors: number }[],
-  topPages: [] as { path: string; views: number }[],
+  topPages: [] as { path: string; views: number; uniqueVisitors: number; avgTimeOnPage: number }[],
+  uniqueVisitors: 0,
+  totalPageViews: 0,
+  averageSessionDuration: 0,
+  bounceRate: 0,
   totalVisitors: 0,
   totalArticles: 0,
   avgReadTime: 0,
-  bounceRate: 0,
 }
 
 export const systemHealth = {
   status: 'healthy',
   uptime: 100,
   lastUpdated: new Date().toISOString(),
+  lastScrapeTime: new Date().toISOString(),
+  nextScheduledScrape: new Date(Date.now() + 3600000).toISOString(),
+  articlesThisWeek: 0,
+  storageUsage: 0.25,
   cpu: 0,
   memory: 0,
   storage: 0,
 }
 
-export const improvementSuggestions: { id: string; title: string; description: string; priority: string }[] = []
+export const improvementSuggestions: {
+  id: string
+  title: string
+  description: string
+  priority: string
+  type: 'content' | 'ux' | 'seo' | 'performance'
+  impact: 'high' | 'medium' | 'low'
+  autoImplementable: boolean
+  implemented: boolean
+}[] = []
 
-export const notifications: { id: string; message: string; read: boolean; createdAt: string }[] = []
+export const notifications: {
+  id: string
+  title: string
+  message: string
+  read: boolean
+  createdAt: string
+  type: 'info' | 'warning' | 'alert' | 'suggestion'
+}[] = []
