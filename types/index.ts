@@ -5,6 +5,7 @@
   excerpt: string
   category: string
   publishedAt: string
+  date?: string
   imageUrl?: string
   featuredImage?: string
   author?: string
@@ -12,6 +13,10 @@
   content?: string
   tags?: string[]
   views: number
+  likes?: number
+  translated?: boolean
+  sourceUrl?: string
+  sourceName?: string
 }
 
 export interface Category {
