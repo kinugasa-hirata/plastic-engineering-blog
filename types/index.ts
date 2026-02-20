@@ -6,6 +6,7 @@
   category: string
   publishedAt: string
   imageUrl?: string
+  featuredImage?: string
   author?: string
   readingTime?: number
   content?: string
