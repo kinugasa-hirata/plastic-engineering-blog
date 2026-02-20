@@ -24,10 +24,11 @@ export function searchArticles(query: string): Article[] {
 
 export const mockAnalyticsData = {
   pageViews: [],
-  categoryDistribution: [],
-  topArticles: [],
+  categoryDistribution: [] as { name: string; value: number }[],
+  topArticles: [] as { title: string; views: number }[],
   dailyStats: [] as { date: string; visitors: number; pageViews: number }[],
   monthlyGrowth: [] as { month: string; articles: number; visitors: number }[],
+  topPages: [] as { path: string; views: number }[],
   totalVisitors: 0,
   totalArticles: 0,
   avgReadTime: 0,
