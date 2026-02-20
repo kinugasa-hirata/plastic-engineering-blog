@@ -26,14 +26,23 @@ export const mockAnalyticsData = {
   pageViews: [],
   categoryDistribution: [],
   topArticles: [],
+  dailyStats: [] as { date: string; visitors: number; pageViews: number }[],
+  monthlyGrowth: [] as { month: string; articles: number; visitors: number }[],
+  totalVisitors: 0,
+  totalArticles: 0,
+  avgReadTime: 0,
+  bounceRate: 0,
 }
 
 export const systemHealth = {
   status: 'healthy',
   uptime: 100,
   lastUpdated: new Date().toISOString(),
+  cpu: 0,
+  memory: 0,
+  storage: 0,
 }
 
-export const improvementSuggestions: string[] = []
+export const improvementSuggestions: { id: string; title: string; description: string; priority: string }[] = []
 
-export const notifications: { id: string; message: string; read: boolean }[] = []
+export const notifications: { id: string; message: string; read: boolean; createdAt: string }[] = []
