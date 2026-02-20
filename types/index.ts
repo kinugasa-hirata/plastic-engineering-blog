@@ -10,7 +10,7 @@
   readingTime?: number
   content?: string
   tags?: string[]
-  views?: number
+  views: number
 }
 
 export interface Category {
